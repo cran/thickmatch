@@ -52,5 +52,6 @@ detach(nysr)
 feasible(z=nysr$intense,X=X,p=nysr$plogit,caliper=0.2,dat=nysr,select_num=10,eps=0.5)
 }
 \references{
-Rosenbaum, P.R. (2017) Imposing Minimax and Quantile Constraints on Optimal Matching in Observational Studies, Journal of Computational and Graphical Statistics, 26:1, 66-78, DOI: 10.1080/10618600.2016.1152971.
+Rosenbaum, P.R. (2017) Imposing Minimax and Quantile Constraints on Optimal Matching in Observational Studies, Journal of Computational and Graphical Statistics, 26:1, 66-78,
+DOI: 10.1080/10618600.2016.1152971.
 }

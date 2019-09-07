@@ -12,15 +12,15 @@ NYSR data on adolescent work intensity and substance Use.
   A data frame with 2816 observations on the following 18 variables.
   \describe{
     \item{\code{IDS}}{NYSR identification number}
-    \item{\code{intense}}{Based on question “During the school year, about how many hours per week did you normally work at a paid job, or did you not have a job”.
-“Never” – student did not have a job;
-“Moderate” - 1-19 hours;
-“Intense” - >=20 hours.
+    \item{\code{intense}}{Based on question ``During the school year, about how many hours per week did you normally work at a paid job, or did you not have a job".
+``Never": student did not have a job;
+``Moderate": 1-19 hours;
+``Intense": >=20 hours.
 }
     \item{\code{family.income}}{Household income with 5000 = (between 0-10,000), 15000= (between 10,000 and 20,000),..., 95000 = (between 90,000 and 100,000) and 105,000 (above 100,000).}
-    \item{\code{family.income.impute}}{Household income with 5000 = (between 0-10,000), 15000= (between 10,000 and 20,000),…, 95000 = (between 90,000 and 100,000) and 105,000 (above 100,000).  For subjects with missing family income, the mean is imputed.}
+    \item{\code{family.income.impute}}{Household income with 5000 = (between 0-10,000), 15000= (between 10,000 and 20,000),..., 95000 = (between 90,000 and 100,000) and 105,000 (above 100,000).  For subjects with missing family income, the mean is imputed.}
     \item{\code{family.income.mis}}{dummy variable for whether household income is missing and the mean is imputed.}
-    \item{\code{family.structure}}{“Two Parent Nonbiological” – both biological father and mother living with child; “Two Parent Nonbiological” – someone assuming a mother role (biological, adoptive, stepparent) living with a husband who assumes a father role (biological, adoptive, step parent) where both parents are biological; “Single Parent/Other” – any other living situation for child.
+    \item{\code{family.structure}}{``Two Parent Biological": both biological father and mother living with child; ``Two Parent Nonbiological": someone assuming a mother role (biological, adoptive, stepparent) living with a husband who assumes a father role (biological, adoptive, step parent) where both parents are biological; ``Single Parent/Other": any other living situation for child.
 }
     \item{\code{highest.education.parent.in.household}}{Maximum education level of household resident who assumes a mother role (biological, adoptive, stepparent) and household resident who assumes a father role (biological, adoptive, stepparent).  If the child is living with a single parent, then this is just the education level of that single parent.}
     \item{\code{highest.education.parent.in.household.impute}}{Maximum education level of household resident who assumes a mother role (biological, adoptive, stepparent) and household resident who assumes a father role (biological, adoptive, stepparent).  If the child is living with a single parent, then this is just the education level of that single parent. For subjects with missing highest education of parent in household, the mean is imputed.}
@@ -30,19 +30,19 @@ NYSR data on adolescent work intensity and substance Use.
     \item{\code{race.hispanic}}{1=hispanic race, 0=other}
     \item{\code{age.teenager}}{age of teenager.  Age is imputed with the mean if it is missing}
     \item{\code{school.dropout}}{Dummy variable of whether student has dropped out of school}
-    \item{\code{alcohol.use}}{Based on question “How often, if at all, do you drink alcohol, such as beer, wine or mixed drinks, not including at religious services”.
-“Never”  - answered “Never”;
-“Moderate” – answered “A few times year” or “About once a month”;
-“Heavy” – answered “A few times a month,” “About once a week,” “A few times a week” or “Almost every day”.
+    \item{\code{alcohol.use}}{Based on question ``How often, if at all, do you drink alcohol, such as beer, wine or mixed drinks, not including at religious services".
+``Never": answered ``Never";
+``Moderate": answered ``A few times year" or ``About once a month";
+``Heavy": answered ``A few times a month", ``About once a week", ``A few times a week" or ``Almost every day".
 }
-    \item{\code{marijuana.use}}{Based on question “How often, if ever, have you used marijuana?”.
-“Never” – answered “Never”;
-“Experimenter” – answered “You tried it once or twice”;
-“Continual User” – answered “You use it occasionally” or “You use it regularly”.
+    \item{\code{marijuana.use}}{Based on question ``How often, if ever, have you used marijuana?".
+``Never": answered ``Never";
+``Experimenter" answered ``You tried it once or twice";
+``Continual User": answered ``You use it occasionally" or ``You use it regularly".
 }
     \item{\code{p}}{Propensity score.
 }
-    \item{\code{plogit}}{Logit of p.
+    \item{\code{plogit}}{Logit of propensity score.
 }
   }
 }

@@ -2,7 +2,7 @@ Package: thickmatch
 Type: Package
 Title: Threshold Matching for Thick Description for Optimal Matching in
         Observational Studies
-Version: 0.1.0
+Version: 0.3.0
 Author: Ruoqi Yu
 Maintainer: Ruoqi Yu <ruoqiyu@wharton.upenn.edu>
 Description: Conducts several closest matched pairs to strengthen a matched quantitative comparison of many pairs by thick description in observational studies.
@@ -18,6 +18,6 @@ Note: One minimum cost flow problem may have several or many solutions
         may have the minor consequence of altering which equivalent
         solution is produced.
 NeedsCompilation: no
-Packaged: 2019-09-02 18:14:46 UTC; ruoqi
+Packaged: 2019-09-06 14:05:11 UTC; ruoqi
 Repository: CRAN
-Date/Publication: 2019-09-03 16:10:02 UTC
+Date/Publication: 2019-09-07 15:30:02 UTC

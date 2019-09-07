@@ -62,10 +62,10 @@ detach(nysr)
 
 eps=threshold(z=nysr$intense,X=X,p=nysr$plogit,caliper=0.2,
 dat=nysr,select_num=10,tol=0.00001)$epsilon
-mm5<-threshold_match(z=nysr$intense,p=nysr$plogit,caliper=0.2,X=XX,dat=d,min.control=2,eps=eps)
-dim(mm5$sdata)
-mm5$sbalance
-mm5$balance
+m<-threshold_match(z=nysr$intense,p=nysr$plogit,caliper=0.2,X=X,dat=nysr,min.control=2,eps=eps)
+dim(m$sdata)
+m$sbalance
+m$balance
 }
 }
 \references{

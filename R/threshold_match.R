@@ -93,7 +93,7 @@ threshold_match<-function(z,p,caliper,X,dat,min.control=1,max.control=min.contro
     if(any(matched.or.not[,2]==0)){
       match.df<-match.df[-which(match.df$treat %in% matched.or.not[which(matched.or.not[,2]==0),1]),]
     }
-    match.df$treat<-as.factor(as.character(match.df$treat))
+    #match.df$treat<-as.factor(as.character(match.df$treat))
     #matches<-as.matrix(plyr::daply(match.df, plyr::.(match.df$treat),
     #                               function(treat.edges) treat.edges$control[treat.edges$x==1],.drop_o=FALSE))
     #matchid<-matrix(c(id1[as.numeric(row.names(matches))],id0[as.vector((matches-sum(z)))]),ncol=ncontrol+1)

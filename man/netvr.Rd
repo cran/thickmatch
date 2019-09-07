@@ -2,8 +2,9 @@
 \alias{netvr}
 \title{Optimal variable-ratio match from a distance matrix.}
 \usage{
-netvr(z,dist,min.control=1,max.control=min.control,total.control=sum(z)*min.control,
-      fine=rep(1,length(z)),penalty=1000)
+netvr(z,dist,min.control=1,max.control=min.control,
+total.control=sum(z)*min.control,
+fine=rep(1,length(z)),penalty=1000)
 }
 \arguments{
 \item{z}{ A vector whose ith coordinate is 1 for a treated unit and is 0 for a control. }
@@ -24,5 +25,6 @@ Of limited interest to most users; function netvr() would typically be called by
 The network contains a bipartite graph for treated and control subjects plus additional nodes for fine balance categories, plus additional nodes accept needed deviations from fine balance yielding near-fine balance.
 }
 \references{
-Bertsekas, D. P. and Tseng, P. (1988) The relax codes for linear minimum cost network flow problems. Annals of Operations Research, 13, 125-190.  Fortran and C code: http://www.mit.edu/~dimitrib/home.html.  Available in R via the optmatch package.
+Bertsekas, D. P. and Tseng, P. (1988) The relax codes for linear minimum cost network flow problems. Annals of Operations Research, 13, 125-190.
+Fortran and C code: http://www.mit.edu/~dimitrib/home.html.  Available in R via the optmatch package.
 }
