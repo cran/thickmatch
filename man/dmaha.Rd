@@ -3,7 +3,7 @@
 \title{Creates a Mahalanobis distance for matching based on a dense network.}
 \usage{
 dmaha(z, X, min.control=1,exact=NULL, nearexact=NULL,
-penalty=1000, rank=F)
+penalty=1000, rank=FALSE)
 }
 \arguments{
 \item{z}{ A vector whose ith coordinate is 1 for a treated unit and is 0 for a control. }
@@ -12,7 +12,7 @@ penalty=1000, rank=F)
 \item{exact}{ If not NULL, then a vector of length(z)=length(p) giving variable that need to be exactly matched. }
 \item{nearexact}{ If not NULL, then a vector of length length(z) giving variable that need to be exactly matched. }
 \item{penalty}{ The penalty for a mismatch on nearexact.}
-\item{rank}{ If rank=T, a rank-based Mahalanobis distance will be  calculated. Otherwise (with default value F), a traditional Mahalanobis distance will be computed.}
+\item{rank}{ If rank=TRUE, a rank-based Mahalanobis distance will be  calculated. Otherwise (with default value FALSE), a traditional Mahalanobis distance will be computed.}
 }
 
 \value{

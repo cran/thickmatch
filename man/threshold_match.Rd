@@ -5,7 +5,7 @@
 threshold_match(z,p,caliper,X,dat,min.control=1,
 max.control=min.control,total.control=sum(z)*min.control,
 exact=NULL,fine=rep(1,length(z)),finepenalty=1000,nearexact=NULL,
-nearexpenalty=100,eps=NULL,penalty=10000,rank=F)
+nearexpenalty=100,eps=NULL,penalty=10000,rank=FALSE)
 }
 \arguments{
 \item{z}{ A vector whose ith coordinate is 1 for a treated unit and is 0 for a control.}
@@ -17,15 +17,15 @@ difference (in the scale of sd(p)) in p is < -caliper or > caliper, then penalty
 \item{dat}{ A data frame with length(z) rows.  If the match is feasible, the matched portion of dat is returned with additional columns that define the match.}
 \item{min.control}{ A positive integer giving the minimum number of controls to be matched to each treated subject.  If min.control is too large, the match will be infeasible.}
 \item{max.control}{ A positive integer giving the maximum number of controls to be matched to each treated subject.}
-\item{total.control}{ A positive integer giving the total number of controls to be matched to each treated subject.  If total.control is too large, the match will be infeasible.}
+\item{total.control}{ A positive integer giving the total number of controls to be matched to each treated subject.  If total.control is too large, the match will be infeasible. Fine balance constraint can be determined based on total.control.}
 \item{exact}{ If not NULL, then a vector of length(z)=length(p) giving variable that need to be exactly matched. }
 \item{fine}{ A vector of with length(z)=length(fine) giving the nominal levels that are to be nearly-finely balanced.}
 \item{finepenalty}{ A numeric penalty imposed for each violation of fine balance.}
 \item{nearexact}{ If not NULL, then a vector of length length(z) giving variable that need to be exactly matched. }
 \item{nearexpenalty}{ The penalty for a mismatch on nearexact.}
-\item{eps}{ The threshold whose feasibility is examined.}
+\item{eps}{ The threshold whose feasibility is examined. If eps is NULL, the conventional optimal match with the propensity score caliper, fine balance, exact and near-exact match constraints is returned.}
 \item{penalty}{ A numeric penalty imposed for each distance greater than eps.}
-\item{rank}{ If rank=T, a rank-based Mahalanobis distance will be  calculated. Otherwise (with default value F), a traditional Mahalanobis distance will be computed.}
+\item{rank}{ If rank=TRUE, a rank-based Mahalanobis distance will be  calculated. Otherwise (with default value FALSE), a traditional Mahalanobis distance will be computed.}
 }
 
 \value{

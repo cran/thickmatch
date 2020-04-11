@@ -1,4 +1,4 @@
-dmaha<-function(z,X,min.control=1,exact=NULL,nearexact=NULL,penalty=1000,rank=F){
+dmaha<-function(z,X,min.control=1,exact=NULL,nearexact=NULL,penalty=1000,rank=FALSE){
   Xmatrix<-function(x){
     if (is.vector(x) || is.factor(x)) x<-matrix(x,nrow=length(z))
 
@@ -86,8 +86,8 @@ dmaha<-function(z,X,min.control=1,exact=NULL,nearexact=NULL,penalty=1000,rank=F)
   }
 
 
-  #icov<-MASS::ginv(cv)
-  LL<-chol(cv)
+  icov<-MASS::ginv(cv)
+  #LL<-chol(cv)
 
   if (is.vector(X)) X<-matrix(X,ncol=1)
   X0<-X[z==0,]
@@ -101,8 +101,8 @@ dmaha<-function(z,X,min.control=1,exact=NULL,nearexact=NULL,penalty=1000,rank=F)
   out <- matrix(NA, m, n - m)
   rownames(out) <- rownames(X)[z == 1]
   colnames(out) <- rownames(X)[z == 0]
-  for (i in 1:m) out[i, ] <- mvnfast::maha(X0,t(as.matrix(X1[i,])),LL,isChol=TRUE)
-  #for (i in 1:m) out[i, ] <- stats::mahalanobis(Xc,t(as.matrix(Xt[i,])),icov,inverted = T)
+  #for (i in 1:m) out[i, ] <- mvnfast::maha(X0,t(as.matrix(X1[i,])),LL,isChol=TRUE)
+  for (i in 1:m) out[i, ] <- stats::mahalanobis(X0,t(as.matrix(X1[i,])),icov,inverted = T)
   if (!is.null(exact)){
     dif <- outer(exact[z == 1], exact[z == 0], "!=")
     out[dif] <- Inf

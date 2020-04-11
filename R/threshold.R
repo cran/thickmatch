@@ -1,4 +1,4 @@
-threshold<-function(z,X,p,caliper,dat,ncontrol=1,exact=NULL,nearexact=NULL,fine=NULL,penalty=1000,nearexpenalty=100,rank=F,select_num=0,tol=0.1){
+threshold<-function(z,X,p,caliper,dat,ncontrol=1,exact=NULL,nearexact=NULL,fine=NULL,penalty=1000,nearexpenalty=100,rank=FALSE,select_num=0,tol=0.1){
 
   #check input
   stopifnot(is.vector(z))

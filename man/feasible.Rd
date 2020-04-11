@@ -4,7 +4,7 @@
 \usage{
 feasible(z,X,p,caliper,dat,ncontrol=1,exact=NULL,
 nearexact=NULL,fine=rep(1,length(z)),penalty=1000,nearexpenalty=100,
-rank=F,select_num=0,eps=1000)
+rank=FALSE,select_num=0,eps=1000)
 }
 \arguments{
 \item{z}{ A vector whose ith coordinate is 1 for a treated unit and is 0 for a control.}
@@ -19,7 +19,7 @@ p might be the propensity score.}
 \item{fine}{ A vector of with length(z)=length(fine) giving the nominal levels that are to be nearly-finely balanced.}
 \item{penalty}{ A numeric penalty imposed for each violation of fine balance.}
 \item{nearexpenalty}{ The penalty for a mismatch on nearexact.}
-\item{rank}{ If rank=T, a rank-based Mahalanobis distance will be  calculated. Otherwise (with default value F), a traditional Mahalanobis distance will be computed.}
+\item{rank}{ If rank=TRUE, a rank-based Mahalanobis distance will be  calculated. Otherwise (with default value FALSE), a traditional Mahalanobis distance will be computed.}
 \item{select_num}{ A positive number giving the required number of matched pairs with distance not exceeding eps.}
 \item{eps}{ The threshold whose feasibility is examined.}
 }

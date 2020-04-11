@@ -3,7 +3,7 @@
 \title{Smallest threshold for thick description.}
 \usage{
 threshold(z,X,p,caliper,dat,ncontrol=1,exact=NULL,nearexact=NULL,fine=NULL,
-penalty=1000,nearexpenalty=100,rank=F,select_num=0,tol=0.1)
+penalty=1000,nearexpenalty=100,rank=FALSE,select_num=0,tol=0.1)
 }
 \arguments{
 \item{z}{ A vector whose ith coordinate is 1 for a treated unit and is 0 for a control.}
@@ -19,7 +19,7 @@ difference (in the scale of sd(p)) in p is < -caliper or > caliper, then penalty
 \item{fine}{ A vector of with length(z)=length(fine) giving the nominal levels that are to be nearly-finely balanced.}
 \item{penalty}{ A numeric penalty imposed for each violation of fine balance.}
 \item{nearexpenalty}{ The penalty for a mismatch on nearexact.}
-\item{rank}{ If rank=T, a rank-based Mahalanobis distance will be  calculated. Otherwise (with default value F), a traditional Mahalanobis distance will be computed.}
+\item{rank}{ If rank=TRUE, a rank-based Mahalanobis distance will be  calculated. Otherwise (with default value FALSE), a traditional Mahalanobis distance will be computed.}
 \item{select_num}{ A positive number giving the required number of matched pairs with distance not exceeding eps.}
 \item{tol}{ The tolerance.  The smallest threshold is determined with an error of at most tol.}
 }

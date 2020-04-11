@@ -1,4 +1,4 @@
-threshold_match<-function(z,p,caliper,X,dat,min.control=1,max.control=min.control,total.control=sum(z)*min.control,exact=NULL,fine=rep(1,length(z)),finepenalty=1000,nearexact=NULL,nearexpenalty=100,eps=NULL,penalty=10000,rank=F){
+threshold_match<-function(z,p,caliper,X,dat,min.control=1,max.control=min.control,total.control=sum(z)*min.control,exact=NULL,fine=rep(1,length(z)),finepenalty=1000,nearexact=NULL,nearexpenalty=100,eps=NULL,penalty=10000,rank=FALSE){
 
   #Check input
   stopifnot(is.data.frame(dat))
@@ -60,7 +60,7 @@ threshold_match<-function(z,p,caliper,X,dat,min.control=1,max.control=min.contro
   }
 
   net<-netvr(z,dist,min.control,max.control,total.control,fine,finepenalty)
-  #net<-netfine(z,dist,ncontrol,fine,penalty)
+
   output<-rcbalance::callrelax(net)
   if (output$feasible!=1){
     warning("Match is infeasible.  Change dist or ncontrol to obtain a feasible match.")
@@ -72,20 +72,21 @@ threshold_match<-function(z,p,caliper,X,dat,min.control=1,max.control=min.contro
     newd<-dist$d
     newd[which(x!=1)]=10*max(newd)
 
-    select_index<-which(newd<=eps)
-    select_treated<-treated[select_index]
-    select_control<-control[select_index]
-    distance<-sort(newd)[1:length(select_index)]
-
     n<-length(z)
     ntreat<-sum(z)
     id1<-(1:n)[z==1]
     id0<-(1:n)[z==0]
 
-    #smatchid<-matrix(c(id1[as.numeric(row.names(smatches))],id0[as.vector((smatches-sum(z)))]),ncol=ncontrol+1)
-    smatchid<-matrix(c(id1[select_treated],id0[(select_control-sum(z))]),ncol=2)
-    smatchid<-as.vector(t(smatchid))
-    sid<-c(id1[select_treated],id0)
+    if (!is.null(eps)){
+      select_index<-which(newd<=eps)
+      select_treated<-treated[select_index]
+      select_control<-control[select_index]
+      distance<-sort(newd)[1:length(select_index)]
+      #smatchid<-matrix(c(id1[as.numeric(row.names(smatches))],id0[as.vector((smatches-sum(z)))]),ncol=ncontrol+1)
+      smatchid<-matrix(c(id1[select_treated],id0[(select_control-sum(z))]),ncol=2)
+      smatchid<-as.vector(t(smatchid))
+      sid<-c(id1[select_treated],id0)
+    }
 
     match.df<-data.frame('treat'=treated,'x'=x,'control'=control)
     matched.or.not<-plyr::daply(match.df,plyr::.(match.df$treat),
@@ -115,7 +116,8 @@ threshold_match<-function(z,p,caliper,X,dat,min.control=1,max.control=min.contro
     }
 
     dat1<-cbind(mset,dat1)
-    m<-list(feasible=output$feasible,d=dat1,Xm=X[matchid,],zm=z[matchid],Xs=X[sid,],zs=z[sid],zms=z[smatchid],dms=dat[smatchid,],Xms=X[smatchid,],number=net$tcarcs)
+    if (!is.null(eps)) m<-list(feasible=output$feasible,d=dat1,Xm=X[matchid,],zm=z[matchid],Xs=X[sid,],zs=z[sid],zms=z[smatchid],dms=dat[smatchid,],Xms=X[smatchid,],number=net$tcarcs)
+    else m<-list(feasible=output$feasible,d=dat1,Xm=X[matchid,],zm=z[matchid],Xs=X,zs=z,zms=z[matchid],dms=dat[matchid,],Xms=X[matchid,],number=net$tcarcs)
   }
   if(m[[1]]==0) {
     if (!is.null(exact)) warning("The match you requested is infeasible.  Reconsider caliper, ncontrol and exact.")
@@ -123,6 +125,7 @@ threshold_match<-function(z,p,caliper,X,dat,min.control=1,max.control=min.contro
   }else{
     balance=DiPs::check(X,m$Xm,z,m$zm)
     sbalance=DiPs::check(m$Xs,m$Xms,m$zs,m$zms)
-    list(data=m$d,sdata=m$dms,balance=balance,sbalance=sbalance,closest=distance)
+    if (!is.null(eps)) list(data=m$d,sdata=m$dms,balance=balance,sbalance=sbalance,closest=distance)
+    else list(data=m$d,sdata=m$dms,balance=balance,sbalance=sbalance,closest=NULL)
   }
 }

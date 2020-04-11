@@ -1,4 +1,4 @@
-feasible<-function(z,X,p,caliper,dat,ncontrol=1,exact=NULL,nearexact=NULL,fine=rep(1,length(z)),penalty=1000,nearexpenalty=100,rank=F,select_num=0,eps=1000){
+feasible<-function(z,X,p,caliper,dat,ncontrol=1,exact=NULL,nearexact=NULL,fine=rep(1,length(z)),penalty=1000,nearexpenalty=100,rank=FALSE,select_num=0,eps=1000){
 
   #Check input
   stopifnot(is.data.frame(dat))
